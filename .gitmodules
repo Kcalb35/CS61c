@@ -1,0 +1,3 @@
+[submodule "resources"]
+	path = resources
+	url = git@github.com:Kcalb35/CS61C-summer2020.git
