@@ -11,3 +11,10 @@
 - little endian
 - 32-bit machine
 - `sizeof(char)` is 1
+
+# projects
+
+- [x] proj1
+- [ ] proj2
+- [ ] proj3
+- [ ] proj4
