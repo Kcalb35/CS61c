@@ -6,6 +6,8 @@ CISC v.s. RISC
 
 # RISC-V
 
+## registers
+
 32 registers which has 32 bytes (a word)
 
 ## assembler directives
@@ -110,3 +112,56 @@ bitwise op `and` `or` `xor`
 comparation `slt` `slti`
 
 environment call `ecall`
+
+## functions
+
+1. prepare arguments
+
+   `a0`-`a7` in value
+
+   `a0`-`a1` out value
+
+   if need more, use memory
+
+2. transfer control
+
+   `jal dst label` set dst register with proper vaue and jump to label
+
+3. acquire storage
+
+4. run the task
+
+   `s0`-`s11` saved registers `sp`, must be the same before and after callee
+
+   `t0`-`t6` `a0`-`a7` `ra` can be used freely by callee
+
+5. prepare return values
+
+6. get control back
+
+   `jr src`
+
+```assembly
+func_label:
+	addi sp,sp, -framesize # "allocate" local space
+	sw ra, <framesize-4>(sp) # save ra
+	# store other callee saved registers
+	# do sth
+	lw ra,<framesize-4>(sp) # retrieve ra
+	addi sp,sp, framesize(sp) # "delete" space
+	jr ra # ret
+```
+
+
+
+caller must save `t0`-`t6` `a0`-`a7` `ra`
+
+callee must save `s0`-`s11`
+
+
+
+### choose registers
+
+- use less registers, saving as less as possible
+- use `t0`-`t6` when a single function
+- use `s0`-`s11` then `t0`-`t6`, when a function calls other functions
