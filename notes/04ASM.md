@@ -165,3 +165,18 @@ callee must save `s0`-`s11`
 - use less registers, saving as less as possible
 - use `t0`-`t6` when a single function
 - use `s0`-`s11` then `t0`-`t6`, when a function calls other functions
+
+# RISC-V instruction formats
+
+R: instructions with 3 registers
+
+I: instructions with immediates
+
+S: store
+
+SB: branch
+
+U: upper immediates,`lui` `addi`
+
+UJ: jal
+
