@@ -6,5 +6,5 @@
 
 void lfsr_calculate(uint16_t *reg) {
     /* YOUR CODE HERE */
+    *reg = ((*reg ^ (*reg >> 2) ^ (*reg >> 3) ^ (*reg >> 5)) << 15) | (*reg >> 1);
 }
-

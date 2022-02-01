@@ -8,26 +8,6 @@ CISC v.s. RISC
 
 32 registers which has 32 bytes (a word)
 
-operate 
-
-- `op dst src1,src2`
-
-- add immediately `addi t1 s1,5`
-
-data transfer
-
-- `memop reg, off(bAddr)`
-
-- `lw reg, off(bAddr)` `sw reg, off(bAddr)`
-
-- example
-
-  ```assembly
-  lw  t0,12(s3)
-  add t0,s2,t0
-  sw  t0,40(s3)
-  ```
-
 ## assembler directives
 
 | Directive | Effect                                                       |
@@ -69,6 +49,27 @@ zero-pad: `0b11`=>`0b0011`
 
 one-pad: `0b11`=>`0b1111`
 
+# operators
+
+- `op dst src1,src2`
+- add `add dst src1 src2`
+- add immediately `addi t1 s1,5`
+- no `subi` for simplicity
+
+## data transfer
+
+- `memop reg, off(bAddr)`
+
+- `lw reg, off(bAddr)` `sw reg, off(bAddr)`
+
+- example
+
+  ```assembly
+  lw  t0,12(s3)
+  add t0,s2,t0
+  sw  t0,40(s3)
+  ```
+
 ## byte instructions
 
 - `sb` save least significant byte
@@ -78,7 +79,7 @@ one-pad: `0b11`=>`0b1111`
 # s0 = 0x00000180
 lb s1,1(s0) # s1=0x00000001
 lb s2,0(s0) # s2=0xFFFFFF80
-sb
+sb sb,2(s0) # s0=0x00800180
 ```
 
 - `lh` load half, load upper 2 byte with sign-extend
@@ -95,6 +96,8 @@ sb
 ## shifting
 
 shift left|right logical|arithmetic [imm]
+
+take 0-31 
 
 ## other
 
