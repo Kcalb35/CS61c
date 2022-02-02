@@ -15,27 +15,28 @@
 # this function exits with error code 7.
 # =================================================================
 argmax:
-
-    # Prologue
-
+    li t0, 1
+    bge a1, t0, loop_start
+    li a0, 7
+    ecall
 
 loop_start:
-
-
-
-
-
-
-
+    li t0, 1 # t0 -> index
+    lw t1, 0(a0) # assumed maximum value
+    li t3, 0 # assume maximum index
+    addi a0, a0, 4
 
 loop_continue:
-
-
+    beq t0, a1, loop_end
+    lw t2, 0(a0)
+    bge t1, t2, ngt
+    mv t1, t2
+    mv t3, t0
+ngt:
+    addi a0, a0, 4
+    addi t0, t0, 1
+    j loop_continue
 
 loop_end:
-    
-
-    # Epilogue
-
-
+    mv a0, t3
     ret
