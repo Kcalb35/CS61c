@@ -21,10 +21,10 @@ dest:
 
 .text
 main:
-    addi t0, x0, 0
-    addi s0, x0, 0
-    la s1, source
-    la s2, dest
+    addi t0, x0, 0 # t0->k
+    addi s0, x0, 0 # s0->sum
+    la s1, source # ->source
+    la s2, dest # dest
 loop:
     slli s3, t0, 2
     add t1, s1, s3
