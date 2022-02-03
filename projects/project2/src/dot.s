@@ -20,16 +20,16 @@
 dot:
     li t0 1 
     bge a2, t0, length_valid
-    li a0 5
-    ecall
+    li a1 5
+    jal exit2
 length_valid:
     bge a3, t0, stride1_valid
-    li a0 6
-    ecall
+    li a1 6
+    jal exit2
 stride1_valid:
     bge a4, t0, stride2_valid
-    li a0 6
-    ecall
+    li a1 6
+    jal exit2
 stride2_valid:
     li t0 0 # t0->index
     li t4 0 # t4-> sum

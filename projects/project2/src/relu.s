@@ -15,8 +15,8 @@
 relu:
     li t0, 1
     bge a1, t0, loop_start
-    li a0, 8
-    ecall
+    li a1 8
+    jal exit2
 
 loop_start:
     li t0, 0 # t0->index

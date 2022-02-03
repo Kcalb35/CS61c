@@ -91,11 +91,11 @@ outer_loop_end:
     ret
 
 size_error1:
-    li a0 2
-    ecall
+    li a1 2
+    jal exit2
 size_error2:
-    li a0 3
-    ecall
+    li a1 3
+    jal exit2
 size_error3:
-    li a0 4
-    ecall
+    li a1 4
+    jal exit2
